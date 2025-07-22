@@ -1,0 +1,87 @@
+body{
+    font-family: 'Special Gothic Expanded One', sans-serif;
+    padding:0;
+    margin:0;
+    color: white;
+    background:salmon;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+nav{
+    display: flex;
+    color: white;
+    flex-direction: row;
+    justify-content: space-between;
+    padding:  0em 2em;
+    margin: 0;
+}
+
+nav h3:hover{
+    cursor: pointer;
+    color:rgba(255, 255, 0, 0.795);
+}
+
+#header {
+    text-align: center;
+}
+
+#achievements {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2.5em;
+    justify-content: center;
+    align-items: center;
+    margin: 5em 0em;
+    padding: 0.1em 5em;
+}
+
+.card {
+    height: 20em;
+    width: 20%;
+    background-color: rgba(0,0,0,0.1);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items:center;
+    padding: 1em 2em;
+    color: white;
+    font-size: 0.8em;
+    margin-bottom: 0.5em;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    color: rgba(255, 255, 0, 0.795);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+
+    nav{
+        padding: 0em 0.5em;
+        font-size: 0.8em;
+        justify-content: space-between;
+    }
+
+    #header {
+        font-size: 1.5em;
+    }
+        #achievements {
+        flex-direction: column;
+    }
+
+    .card {
+        width: 85%;
+        margin-bottom: 1em;
+    }
+}

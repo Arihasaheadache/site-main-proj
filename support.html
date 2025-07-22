@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Women in Progress</title>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Special Gothic Expanded One', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f4f9;
+      color: #333;
+    }
+
+    header {
+      background-color: palevioletred;
+      color: white;
+      padding: 2em;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 0.2em;
+    }
+
+    section {
+      padding: 2em 1em;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .chart-container {
+      margin: 2em 0;
+      background-color: white;
+      border-radius: 12px;
+      padding: 2em;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    canvas {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .explanation {
+      font-size: 1.1em;
+      line-height: 1.6;
+      margin-top: 1em;
+    }
+
+    footer {
+      background-color: #222;
+      color: #fff;
+      text-align: center;
+      padding: 2em 1em;
+      margin-top: 3em;
+    }
+
+    footer a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      margin: 0 1em;
+    }
+
+    footer a:hover {
+      color: rgba(255, 255, 0, 0.795);
+    }
+
+    #navbar {
+  background-color: palevioletred;
+  padding: 1em 2em;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.nav-logo {
+  color: white;
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.nav-logo:hover {
+  color: rgba(255, 255, 0, 0.795);
+}
+
+  </style>
+</head>
+<body>
+
+     <nav id="navbar">
+    <div class="nav-content">
+      <a href="index.html" class="nav-logo">← Back to Home</a>
+    </div>
+  </nav>
+
+  <header>
+    <h1>Women in Progress</h1>
+    <p>Visualizing the rise of women across education, technology, and leadership</p>
+  </header>
+
+  <section>
+    <div class="chart-container">
+      <h2>Women in STEM Fields</h2>
+      <p class="explanation">
+        Women have steadily increased their presence in STEM (Science, Technology, Engineering, and Mathematics), a field historically dominated by men.
+        As education access has grown and workplace barriers are challenged, more women are pursuing STEM degrees and careers.
+      </p>
+      <canvas id="stemChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+      <h2>Women in Leadership Roles</h2>
+      <p class="explanation">
+        From CEOs to political leaders, the representation of women in leadership roles has significantly grown. This reflects a global shift in recognizing
+        the capabilities and perspectives that women bring to decision-making tables.
+      </p>
+      <canvas id="leadershipChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+      <h2>Higher Education Enrollment</h2>
+      <p class="explanation">
+        Globally, women now outnumber men in college and university enrollment in many countries. This is a strong indicator of the next generation’s potential,
+        where women are poised to drive innovation, culture, and governance.
+      </p>
+      <canvas id="educationChart"></canvas>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <a href="https://github.com/Arihasaheadache" target="_blank">GitHub: Arihasaheadache</a>
+      <a href="https://leapnextgenscholar.in/" target="_blank">Lenovo Leap</a>
+    </div>
+    <p>&copy; 2025 Women Everywhere. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const stemCtx = document.getElementById('stemChart').getContext('2d');
+      const leadershipCtx = document.getElementById('leadershipChart').getContext('2d');
+      const educationCtx = document.getElementById('educationChart').getContext('2d');
+
+      new Chart(stemCtx, {
+        type: 'line',
+        data: {
+          labels: ['1990', '2000', '2010', '2020', '2025'],
+          datasets: [{
+            label: 'Women in STEM (%)',
+            data: [20, 25, 30, 35, 40],
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 2,
+            fill: true,
+            tension: 0.3
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: false
+            }
+          }
+        }
+      });
+
+      new Chart(leadershipCtx, {
+        type: 'bar',
+        data: {
+          labels: ['2010', '2015', '2020', '2025'],
+          datasets: [{
+            label: 'Women in Leadership (%)',
+            data: [15, 20, 28, 35],
+            backgroundColor: 'rgba(54, 162, 235, 0.7)'
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: false
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 50
+            }
+          }
+        }
+      });
+
+      new Chart(educationCtx, {
+        type: 'line',
+        data: {
+          labels: ['2000', '2010', '2020', '2025'],
+          datasets: [{
+            label: 'Women in Higher Education (%)',
+            data: [45, 50, 55, 60],
+            borderColor: 'rgba(255, 206, 86, 1)',
+            backgroundColor: 'rgba(255, 206, 86, 0.2)',
+            borderWidth: 2,
+            fill: true,
+            tension: 0.3
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: false
+            }
+          }
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
